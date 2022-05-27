@@ -1,0 +1,143 @@
+\let\negmedspace\undefined
+\let\negthickspace\undefined
+%\RequirePackage{amsmath}
+\documentclass[journal,12pt,onecolumn]{IEEEtran}
+\usepackage{titlesec}
+ \usepackage[utf8]{inputenc}
+ \usepackage{graphicx}
+ \usepackage{amsmath}
+ \usepackage{mathrsfs}
+\usepackage{txfonts}
+\usepackage{stfloats}
+\usepackage{bm}
+ \usepackage{enumitem}
+\usepackage{mathtools}
+\usepackage{tikz}
+\usepackage{circuitikz}
+\usepackage{verbatim}
+\usepackage{cite}
+\usepackage{cases}
+\usepackage{subfig}
+ \usepackage{amsfonts}
+ \usepackage{amssymb}
+\usepackage[breaklinks=false,hidelinks]{hyperref}
+\usepackage{listings}
+\usepackage{calc}
+\usepackage{color}
+\usepackage{moresize}
+
+\titleformat*{\section}{\color{teal}\LARGE\bfseries\filcenter}
+\titleformat*{\subsection}{\color{blue}\large\bfseries}
+\begin{document}
+\begin{titlepage}
+    \begin{center}
+        \vspace*{1 cm}
+        \HUGE {\color{teal} Warbler} \\
+        \vspace*{1 cm}
+        \includegraphics[width=0.3\linewidth]{./media/logo.png}\\[1ex]
+        \vspace{1 cm}
+        \LARGE {SDF Project} \\
+        \vspace{1 cm}
+        \large {Nunsavath Sree Harsha (CS21BTECH11042) \\ Rajiv Shailesh Chitale (CS21BTECH11051) \\ Vishal Vijay Devadiga (CS21BTECH11061)}
+        \vfill
+        \large Indian Institute of Technology, Hyderabad \\ Computer Science and Enginnering
+    \end{center}
+\end{titlepage}
+%
+\section*{\textbf{Description}}
+\noindent Our project entails the creation of a social media platform called {\color{blue}Warbler}. 
+It is inspired by Twitter. \\
+It allows users to share the ups and downs in their life, like the notes of a singing Warbler.
+It enables its users to communicate frequently using short posts. 
+Warbler provides interactive features such as likes, retweets, polls etc. 
+It encourages discussion via replies. 
+Our platform allows our users to stay updated with this constantly changing world. 
+
+\section*{\textbf{Tech Stack}}
+\subsection*{\textbf{Front end}} HTML/CSS, JavaScript for an interactive Graphical User Interface
+\subsection*{\textbf{Back end}} Java for algorithms and Object-Oriented Programming
+\subsection*{\textbf{Database}} MySQL to store data persistently
+
+\section*{\textbf{Features}} 
+\subsection*{\textbf{Sign in / Sign up}}
+\begin{itemize}
+    \item A person over the minimum age of 13 can register on our platform 
+    \item Each user has a unique username
+    \item Upon registration, users will be able to login into the website
+\end{itemize}
+%
+\subsection*{\textbf{Profile}}
+\noindent Each user has a customizable profile which includes:
+\begin{itemize}
+    \item Custom display name and display photo
+    \item Bio containing short description of the user
+    \item Details including date of birth, location and website
+    \item Date of joining the platform
+    \item Posts liked by the user
+    \item Post history of the user
+    \item List of followers
+    \item List of users being followed
+\end{itemize}
+%
+\subsection*{\textbf{Posts}}
+\noindent Users can create/delete posts. Posts can also be scheduled for a given time. \\
+Users can decide who can reply to their post. \\
+A post can contain:
+\begin{itemize}
+    \item Text (upto 280 characters)
+    \item Photos (upto 4 photos)
+    \item Video (upto 140 seconds)
+    \item Gif (upto 1 gif)
+    \item Poll
+    \item Content and spoiler warnings
+    \item Tags and Hashtags
+\end{itemize}
+\pagebreak
+The following actions can be taken on a post:
+\begin{itemize}
+    \item Reply 
+    \item Repost
+    \item Like 
+    \item Share
+    \item Report
+    \item Bookmark
+\end{itemize}
+%
+\subsection*{\textbf{Direct messages}}
+\begin{itemize}
+    \item Users can accept or deny requests for direct messages
+    \item These messages can also contain media
+\end{itemize}
+%
+\subsection*{\textbf{Feed}}
+\begin{itemize}
+    \item Posts on a user's feed depends on their interests
+    \item It also provides suggestions on accounts to follow, based on a user's interests
+    \item There is an option to mute users from the feed
+    \item Brands can advertise themselves using promoted posts
+\end{itemize}
+%
+\subsection*{\textbf{Search}}
+\begin{itemize}
+    \item It is possible to search for posts and users
+    \item Users can search for posts containing a specific hashtag
+\end{itemize}
+%
+\subsection*{\textbf{Settings}}
+Users have the option to:
+\begin{itemize}
+    \item Switch between dark and light mode
+    \item Change font size
+    \item Change notification settings
+    \item Change password
+    \item Deactivate account
+\end{itemize}
+%
+\subsection*{\textbf{More}}
+\begin{itemize}
+    \item A user can block other users
+    \item Admins can ban users that have been reported many times
+    \item The platform can detect and protect itself from spam
+    \item A user can get notifications from replies, tags and likes
+\end{itemize}    
+\end{document}
