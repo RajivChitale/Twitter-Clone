@@ -1,8 +1,7 @@
-# SDF Project - 2
+# Twitter Clone
 
 ### Collaborators: 
 - [Rajiv Shailesh Chitale](https://github.com/RajivChitale)
-- [Nunsavath Sree Harsha](https://github.com/Nunsavathharsha)
 - [Vishal Vijay Devadiga](https://github.com/SterbenVD)
 
 ### Course Details:
