@@ -1,0 +1,83 @@
+.NavbarOption,
+.NavbarOption-active {
+    min-width: 25%;
+    display: flex;
+    width:15rem;
+    align-items: center;
+    cursor: pointer;
+    text-decoration: none;
+    justify-items: center;
+}
+
+.NavbarOption-active {
+    color: var(--warbler-color);
+}
+
+.NavbarOption-active:hover {
+    background-color: var(--warbler-background);
+    transition: background-color 0.2s ease-in-out;
+    border-radius: 30px;
+}
+
+.NavbarOption-active>.Icon {
+    margin: 10%;
+    font-size: 230%;
+}
+
+.NavbarOption-active>h3 {
+    font-weight: bold;
+    margin-right: auto;
+    font-size: 180%;
+    align-items: center;
+}
+
+.NavbarOption:hover {
+    background-color: var(--warbler-background);
+    transition: background-color 0.2s ease-in-out;
+    border-radius: 30px;
+    color: var(--warbler-color);
+
+}
+
+.NavbarOption>.Icon {
+    margin: 10%;
+    font-size: 200%;
+}
+
+.NavbarOption>h3 {
+    margin-right: auto;
+    font-size: 150%;
+    align-items: center;
+    font-weight: bold;
+}
+
+.Navbar>.Warbler_Icon {
+    color: var(--warbler-color);
+    height: auto;
+    width: 10rem;
+    margin-top: 10px;
+    margin-left: 10%;
+    padding: 2%;
+    align-items: center;
+}
+
+.Navbar>.Account_button {
+    color: var(--warbler-color);
+    font-size: 150%;
+    border-radius: 10px;
+    background-color: var(--warbler-background);
+
+}
+
+.Navbar {
+    display: flexbox;
+    height: 30rem;
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 25rem;
+    padding-left: 2%;
+    padding-right: 2%;
+}

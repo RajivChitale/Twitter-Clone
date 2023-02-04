@@ -1,0 +1,164 @@
+.Explore,
+.Messages,
+.Profile,
+.Home {
+    display: flex;
+}
+
+.Messages_box {
+    width: 100rem;
+    border-left: 1px solid var(--warbler-color);
+}
+
+.Exploring {
+    width: 100rem;
+    border-left: 2px solid var(--warbler-color);
+}
+
+.Reply_Section {
+    border-top: 2px solid var(--warbler-background);
+}
+
+.InputBox {
+    display: flex;
+    padding: 1%;
+}
+
+.MessageInputBox {
+    display: flex;
+    padding: 1%;
+    padding-left : 50% !important;
+}
+
+.textInput {
+    flex: 0.9;
+    margin: 0% 3% 1% 3%;
+    padding: 3%;
+    font-size: 20px;
+    border: none;
+}
+
+.searchButton {
+    flex: 0.1;
+    background-color: var(--warbler-color) !important;
+    border: none !important;
+    color: white !important;
+    border-radius: 30px !important;
+    width: 60px;
+    height: 40px !important;
+    margin: auto;
+}
+
+
+.Explore_Header,
+.User_Header {
+    position: sticky;
+    top: 0;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 900 !important;
+    text-transform: inherit !important;
+    background-color: white;
+    z-index: 1;
+    padding: 5px 10px;
+    border-bottom: 2px solid var(--warbler-background);
+}
+
+.Body_Header {
+    font-size: 20px;
+    font-weight: 900 !important;
+    text-transform: inherit !important;
+    text-align: center;
+}
+
+.Hashtags {
+    font-size: 20px;
+    text-transform: inherit !important;
+    color: var(--warbler-color);
+    padding: 5px 10px;
+}
+
+.Hashtags:hover {
+    background-color: var(--warbler-background);
+
+}
+
+.User {
+    width: 100rem;
+    display: flexbox;
+    border-left: 2px solid var(--warbler-color);
+}
+
+.User_Details {
+    padding: 0.5%;
+    display: flexbox;
+    font-size: 20px;
+    text-transform: inherit !important;
+    color: var(--warbler-color);
+    border-bottom: 2px solid var(--warbler-background);
+}
+.Follow_Details {
+    text-align: center;
+    font-size: 18px;
+    padding: 0.5%;
+    border-bottom: 2px solid var(--warbler-background);
+}
+.Follow_Details >span {
+    margin-right: 20%;
+}
+
+.Follow_Button {
+    flex: 0.1;
+    background-color: var(--warbler-color) !important;
+    border-width: 0px;
+    color: white !important;
+    border-radius: 30px !important;
+    width: 100px;
+    height: 40px !important;
+    margin: auto;
+}
+.Follow_Button:hover {
+    background-color: #CCCCFF!important;
+    border-width: 2px !important;
+    color: black!important;
+}
+
+.Unfollow_Button {
+    flex: 0.1;
+    background-color: white!important;
+    color: black!important;
+    border-width: 2px !important;
+    border-radius: 30px !important;
+    width: 120px;
+    height: 40px !important;
+    margin: auto;
+}
+.Unfollow_Button:hover {
+    background-color: #FFCCCC!important;
+    color:red!important;
+    border-width: 2px !important;
+    border-color: red !important;
+}
+
+.User_Posts_Button,
+.Reply_Posts_Button {
+    background-color: var(--warbler-color) !important;
+    border: none !important;
+    color: white !important;
+    border-radius: 30px !important;
+    width: 200px;
+    height: auto;
+    margin: 2%;
+    padding: 2%
+}
+
+.Submit_Info {
+    background-color: var(--warbler-color) !important;
+    border: none !important;
+    color: white !important;
+    border-radius: 10px !important;
+    width: 50px;
+    height: auto;
+    margin: 2%;
+    padding: 1%
+}
