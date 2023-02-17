@@ -1,6 +1,6 @@
 .Feed, .Reply{
-    border-left: 1px solid var(--warbler-color);
-    flex: 0.80;
+    border-left: 2px solid var(--warbler-color);
+    width: 100rem;
     min-width: fit-content;
     overflow-y: scroll;
     -ms-overflow-style: none;

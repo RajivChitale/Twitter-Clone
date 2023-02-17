@@ -5,18 +5,20 @@ export const setLike = async (req, res) => {
     try {
         req.body.liketime = new Date().getTime(); //set timestamp
         await Like.create(req.body);
+        await Post.increment(['likes'], { where: { postid:req.body.postid } });
         res.json({
             message: "Liked"
         });
 
-        const post = await Post.findAll({
+        /*
+        const post = await Post.findOne({
             where: { postid: req.body.postid }
         });
-        post[0].likes += 1;
+        post.likes += 1;
 
-        await Post.update(post[0], {
+        await Post.update(post, {
             where: {postid: req.body.postid}
-        });
+        }); */
         
 
     } catch (error) {
@@ -72,22 +74,25 @@ export const unlike = async (req, res) => {
     try {
         await Like.destroy({
             where: {
-                postid: req.data.postid,
-                username: req.data.username
+                postid: req.body.postid,
+                username: req.body.username
             }
         });
+        await Post.decrement(['likes'], { where: { postid: req.body.postid } });
         res.json({
             message: "Unliked"
         });
 
-        const post = await Post.findAll({
+        /*
+        const post = await Post.findOne({
             where: { postid: req.data.postid }
         });
-        post[0].likes -= 1;
+        post.likes -= 1;
 
-        await Post.update(post[0], {
+        await Post.update(post, {
             where: {postid: req.data.postid}
         });
+        */
 
     } catch (error) {
         res.json({ message: error.message });

@@ -7,15 +7,20 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import './Sign.css';
 import WarblerLogo from "../graphics/logo.png";
+import URL from './globalvars.js';
+
+
 const Signin = () => {
     const [entryUsername, setEntryUsername] = useState('');
     const [entryPassword, setEntryPassword] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
     const navigate = useNavigate();
 
     //Realised checking should be server side. 
     const checkPassword = async (e) => {
+
         e.preventDefault();
-        const res = await axios.post('http://192.168.51.81:5000/userlist/auth', {
+        const res = await axios.post(`${URL}/userlist/auth`, {
             username: entryUsername,
             password: entryPassword
         });
@@ -23,7 +28,7 @@ const Signin = () => {
             document.cookie = `token=:${res.data.token}`;
             navigate("/Home");
         }
-        else { window.alert("Incorrect username or password") } //;  "Incorrect username or password"
+        else { setErrorMessage("Incorrect username or password") } //;  "Incorrect username or password"
     }
 
     return (
@@ -54,17 +59,13 @@ const Signin = () => {
                             onChange={(e) => setEntryPassword(e.target.value)}
                         />
 
-                        <Form.Text id="passwordHelpBlock" muted>
-                            Your password must be 8-20 characters long, contain letters and numbers, and
-                            must not contain spaces, special characters, or emoji.
-                        </Form.Text>
                     </Form.Group>
                     <Button variant="primary" type="submit" onClick={checkPassword}>
                         Submit
                     </Button>
                 </Form>
-                <Link to="/Signup">To register </Link>
-
+                <Link to="/Signup" className="LinkText">Don't have an account yet? </Link>
+                <div className="ErrorMessage">{errorMessage}</div>
             </div>
         </div>
     )

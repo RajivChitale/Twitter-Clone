@@ -2,19 +2,23 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from "axios";
 import './TweetBox.css';
+import URL from './globalvars.js';
+
+
 const TweetBox = ({ username }) => {
     const [tweetMessage, setTweetMessage] = useState("");
     const [tweetImage, setTweetImage] = useState("");
-    const navigate = useNavigate();
+    //const navigate = useNavigate();
     const savePost = async () => {
-        const mes = await axios.post('http://192.168.51.81:5000/postlist', {
-            parentId: null,
-            retweetId: null,
+        const mes = await axios.post(`${URL}/postlist`, {
+            parentid: null,
+            retweetid: null,
             username: username,
             text: tweetMessage,
-            media1: tweetImage,
+            media1: tweetImage
         });
         console.log(mes.data.message);
+        if(mes.data.message==="Spam"){window.alert("Possible spam detected. Please try again later."); }
         setTweetMessage("");
         setTweetImage("");
     }
@@ -43,7 +47,7 @@ const TweetBox = ({ username }) => {
                         type="submit"
                         className="tweetButton"
                     >
-                        Tweet
+                        Post
                     </button>
                 </div>
             </form>

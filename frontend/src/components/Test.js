@@ -7,7 +7,7 @@ const Test = async() => {
     let token = document.cookie;
     token = token.split('=:')[1];
     console.log(token);
-    const user = await axios.get('http://192.168.51.81:5000/checkToken', {
+    const user = await axios.get(`${URL}/checkToken`, {
         token: token
     });
     console.log(user);

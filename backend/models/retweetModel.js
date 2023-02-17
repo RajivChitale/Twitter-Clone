@@ -7,23 +7,24 @@ const Retweet = db.define('retweetlist', {
         allowNull: false
     },
     retweetid: {                    //original id
-        type: DataTypes.STRING,
+        type: DataTypes.INTEGER,
         allowNull: false
     },
     newid: {                        //id of the retweet
-        type: DataTypes.STRING,
+        type: DataTypes.INTEGER,
         allowNull: false
     }
 }, {
     freezeTableName: true,
     timestamps: false
 });
+Retweet.removeAttribute('id');
 export default Retweet;
 
 /*
 CREATE TABLE retweetlist (
     username VARCHAR(40),
-    retweetid VARCHAR(40),
-    newid VARCHAR(40)
+    retweetid INT,
+    newid INT
 ) ENGINE=INNODB;
 */

@@ -6,28 +6,42 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import './Sign.css';
 import WarblerLogo from "../graphics/logo.png";
+import URL from './globalvars.js';
+
 
 const SignUp = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
     const navigate = useNavigate();
     const saveUser = async (e) => {
         e.preventDefault();
-        let res = await axios.post('http://192.168.51.81:5000/userlist', {
-            username: username,
-            password: password,
-            displayname: username,
-            displaypic: null,
-            bio: 'Hello I am using Warbler',
-            location: null,
-            birthday: null,
-            jointime: null
-        });
-        if (res.data.success == true) {
-            document.cookie = `token=:${res.data.token}`;
-            navigate("/Home");
-        }
-        else { window.alert("Someone has already taken this username.") }
+
+        if(username.length < 3) {setErrorMessage("Username is too short! It must have at least 3 characters.");}
+        else if(username.length > 20) {setErrorMessage("Username is too long! It must have most 20 characters.");}
+        else if(!username.match(/^[a-zA-Z0-9_]+$/)) {setErrorMessage("Username can only contain letters, numbers and underscores! (no spaces, special characters and emojis)");}
+        else if(password.length < 8) {setErrorMessage("Password is too short! It must have at least 8 characters.");}
+        else if(password.length > 20) {setErrorMessage("Password is too long! It must have at most 20 characters.");}
+        else if(!password.match(/^[!-~]+$/)) {setErrorMessage("Password can only contain letters, numbers, symbols and underscores! (no spaces, emojis or other special characters)");}
+        else{
+            let res = await axios.post(`${URL}/userlist`, {
+                username: username,
+                password: password,
+                displayname: username,
+                displaypic: null,
+                bio: 'Hello I am using Warbler',
+                location: null,
+                birthday: null,
+                jointime: null,
+                followercount: 0,
+                followingcount: 0
+            });
+            if (res.data.success == true) {
+                document.cookie = `token=:${res.data.token}`;
+                navigate("/Home");
+            }
+            else { setErrorMessage("This username has already been taken!") }
+        }  
     }
     return (
         <div className='Page'>
@@ -41,7 +55,7 @@ const SignUp = () => {
                     <Form.Group className="mb-2" >
                         <Form.Label>Username</Form.Label>
                         <Form.Control type="text"
-                            placeholder="Enter your Username"
+                            placeholder="Create your Username"
                             value={username}
                             onChange={(e) => setUsername(e.target.value)}
                         />
@@ -50,21 +64,21 @@ const SignUp = () => {
                         <Form.Label >Password</Form.Label>
                         <Form.Control
                             type="password"
-                            placeholder="Enter your Password"
+                            placeholder="Create your Password"
                             aria-describedby="passwordHelpBlock"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                         />
                         <Form.Text id="passwordHelpBlock" muted>
-                            Your password must be 8-20 characters long, contain letters and numbers, and
-                            must not contain spaces, special characters, or emoji.
+                            Username can contain numbers, letters and underscores. Password can also contain symbols. Spaces and emojis are not allowed.
                         </Form.Text>
                     </Form.Group>
                     <Button variant="primary" type="submit" onClick={saveUser} >
                         Submit
                     </Button>
                 </Form>
-                <Link to="/">To log in</Link>
+                <Link to="/" className="LinkText">Already have an account?</Link>
+                <div className="ErrorMessage">{errorMessage}</div>
             </div>
         </div>
     )

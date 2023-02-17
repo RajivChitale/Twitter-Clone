@@ -9,6 +9,7 @@ import Bookmarks from './components/Bookmarks.js';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import "./App.css";
 import Reply from './components/Reply.js';
+import User from './components/User.js';
 
 function App() {
   return (
@@ -20,9 +21,10 @@ function App() {
           <Route path="/Home" element={<Home />} />
           <Route path="/Explore" element={<Explore />} />
           <Route path="/Bookmarks" element={<Bookmarks />} />
-          <Route path="/Messages" element={<Messages />} />
+          <Route path="/Messages/:receiver" element={<Messages />} />
           <Route path="/Profile" element={<Profile />} />
           <Route path="/Reply/:postid" element={<Reply />} />
+          <Route path="/User/:username" element={<User />} />
         </Routes>
       </BrowserRouter>
     </div>

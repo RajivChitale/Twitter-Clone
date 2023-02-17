@@ -2,12 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from "axios";
 import './TweetBox.css';
+import URL from './globalvars.js';
+
 const ReplyBox = ({ username, parentId }) => {
     const [tweetMessage, setTweetMessage] = useState("");
     const [tweetImage, setTweetImage] = useState("");
     const navigate = useNavigate();
     const savePost = async () => {
-        const mes = await axios.post('http://192.168.51.81:5000/postlist', {
+        const mes = await axios.post(`${URL}/postlist`, {
             parentid: parentId,
             retweetId: null,
             username: username,

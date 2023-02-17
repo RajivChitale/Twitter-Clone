@@ -27,8 +27,14 @@ const User = db.define('userlist', {
     birthday: {
         type: DataTypes.DATEONLY
     },
+    followercount: {
+    type: DataTypes.INTEGER
+    },
+    followingcount: {
+    type: DataTypes.INTEGER
+    },
     jointime: {
-        type: DataTypes.INTEGER
+        type: DataTypes.STRING //practically int stored as string
         //  allowNull: false
     },
 }, {
@@ -46,6 +52,8 @@ CREATE TABLE userlist (
     bio VARCHAR(160),
     location VARCHAR(160),
     birthday DATE,
-    jointime VARCHAR(40)
+    jointime VARCHAR(40),
+    followercount INT,
+    followingcount INT
 ) ENGINE=INNODB;
 */

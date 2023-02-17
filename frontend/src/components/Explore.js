@@ -3,37 +3,69 @@ import Navbar from './Navbar.js';
 import Sidebar from './Sidebar.js';
 import './2col.css';
 import { MagnifyingGlass } from 'phosphor-react';
-
+import { useNavigate } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import "./Feed.css";
 import Post from './Post.js';
 import axios from "axios";
+import URL from './globalvars.js';
 
-const Explore = (username) => {
-  const [showTrending, setShowTrending] = useState(true);
+
+const Explore = () => {
+  const [username, setUser] = useState("");
+  const navigate = useNavigate();
+  const Auth = async () => {
+    let usertoken = document.cookie;
+    usertoken = usertoken.split('=:')[1];
+    console.log(usertoken);
+    try {
+      const user = await axios.post(`${URL}/checkToken`, {
+        token: usertoken
+      });
+      if (user.data.success) {
+        setUser(user.data.username);
+      }
+      else {
+        navigate("/");
+      }
+    } catch (error) {
+      navigate("/");
+    }
+  }
+  useEffect(() => {
+    Auth();
+  }, []);
+
+  const [trending, setTrending] = useState([]);
   const [searchOrder, setSearchOrder] = useState("time");
   const [searchText, setSearchText] = useState("");
   const [post, setPost] = useState([]);
   const [hashtags, setHashtags] = useState([]);
 
   const trendingHashtags = async () => {
-    if (showTrending) {
-      const hours = 24;
-      const objlist = await axios.get(`http://192.168.51.81:5000/hashtaglist/${hours}`);
-      const hashlist = await objlist.data.map((obj) => <div key={obj.hashtag}> {obj.hashtag} {obj.count}  </div>);
-      setHashtags(hashlist);
-    }
+    const hours = 24;
+    const objlist = await axios.get(`${URL}/hashtaglist/${hours}`);
+    const hashlist = await objlist.data.map((obj) => <div key={obj.hashtag}> {obj.hashtag} x{obj.count} </div>);
+    setHashtags(  
+      <div>
+      <div className='Body_Header'>
+         Trending Hashtags
+      </div>
+      <div className='Hashtags'>
+         {hashlist}
+      </div>
+    </div>);
   }
 
   const postsBySearchTime = async () => {
-    const objlist = await axios.post('http://192.168.51.81:5000/postlist/searchtime', { search: searchText });
+    const objlist = await axios.post(`${URL}/postlist/searchtime`, { search: searchText });
     //console.log(objlist.data);
     const postlist = await objlist.data.map((obj) => <Post postid={obj.postid} key={obj.postid} user={username} />);
     setPost(postlist);
   }
 
   const postsBySearchLikes = async () => {
-    const objlist = await axios.post('http://192.168.51.81:5000/postlist/searchlikes', { search: searchText });
+    const objlist = await axios.post(`${URL}/postlist/searchlikes`, { search: searchText });
     //console.log(objlist.data);
     const postlist = await objlist.data.map((obj) => <Post postid={obj.postid} key={obj.postid} user={username} />);
     setPost(postlist);
@@ -48,6 +80,20 @@ const Explore = (username) => {
     trendingHashtags();
   }, []);
 
+  useEffect( ()=>{
+    if(searchText==="" || searchText===null)
+    {
+      setTrending(hashtags)
+      setPost();
+    }
+    else{
+      search();
+      setTrending();
+    }
+
+    }, [searchText, hashtags]
+  );
+ 
 
   return (
     <div className='Explore'>
@@ -63,22 +109,13 @@ const Explore = (username) => {
               className='textInput'
               type="text"
             />
-            <button
-              onClick={search()}
-              type="submit"
-              className="searchButton"
-            >
+            <button onClick={search} type="submit" className="searchButton">
               <MagnifyingGlass />
             </button>
           </form>
         </div>
         <div className='Body'>
-          <div className='Body_Header'>
-            Trending Hashtags
-          </div>
-          <div className='Hashtags'>
-            {hashtags}
-          </div>
+          {trending}
           {post}
         </div>
       </div>

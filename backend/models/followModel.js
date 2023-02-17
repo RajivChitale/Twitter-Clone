@@ -1,7 +1,7 @@
 import { Sequelize } from "sequelize";
 import db from "../config/database.js";
 const { DataTypes } = Sequelize;
-const Post = db.define('followlist', {
+const Follow = db.define('followlist', {
     follower: {
         type: DataTypes.STRING,
         allowNull: false
@@ -14,7 +14,8 @@ const Post = db.define('followlist', {
     freezeTableName: true,
     timestamps: false
 });
-export default Post;
+Follow.removeAttribute('id');
+export default Follow;
 
 /*
 CREATE TABLE followlist (

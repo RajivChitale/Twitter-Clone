@@ -6,6 +6,12 @@
     margin-top: 15%;
 }
 
+.LinkText{
+    display:flex;
+    padding-top:0.5%;
+    padding-bottom:1%;
+}
+
 .Page {
     display: flex;
 }
@@ -18,10 +24,15 @@
     flex: 0.4;
 }
 
+.ErrorMessage
+{
+    color: red;
+}
+
 .Warbler_Icon {
     color: var(--warbler-color);
-    height: 40%;
-    width: auto;
+    height: auto;
+    width: 40%;
     margin-top: 45%;
     margin-left: 35%;
 }
@@ -29,7 +40,7 @@
 .Warbler_Text {
     color: var(--warbler-color);
     position: fixed;
-    font-size: 96px;
+    font-size: 96px !important;
     width: auto;
     margin-top: 4%;
     margin-left: 36%;

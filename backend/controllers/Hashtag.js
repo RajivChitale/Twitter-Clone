@@ -38,19 +38,19 @@ export const getTrending = async (req, res) => {
     }
 }
 
-export const deleteHashtag = async (req, res) => {
+export const deleteHashtag = async (postid) => {
     try {
         await Hashtag.destroy({
             where: {
-                postid: req.data.postid
+                postid: postid
             }
         });
-        res.json({
+        return({
             message: "Deleted hashtags from post"
         });
 
     } catch (error) {
-        res.json({ message: error.message });
+        return({ message: error.message });
     }
 }
 

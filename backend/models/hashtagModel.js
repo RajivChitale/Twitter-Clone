@@ -27,7 +27,7 @@ export default Hashtag;
 
 /*
 CREATE TABLE hashtaglist (
-    postid VARCHAR(40),
+    postid INT,
     username VARCHAR(40),
     hashtag VARCHAR(280),
     posttime VARCHAR(40)

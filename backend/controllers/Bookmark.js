@@ -26,8 +26,8 @@ export const unmark = async (req, res) => {
     try {
         await Bookmark.destroy({
             where: {
-                postid: req.data.postid,
-                username: req.data.username
+                postid: req.body.postid,
+                username: req.body.username
             }
         });
         res.json({

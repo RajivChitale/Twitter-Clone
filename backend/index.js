@@ -1,6 +1,6 @@
 import express from "express";
 import db from "./config/database.js";
-import userRoutes from "./routes/index.js";
+// import userRoutes from "./routes/index.js";
 import cors from "cors";    
 
 const app = express();

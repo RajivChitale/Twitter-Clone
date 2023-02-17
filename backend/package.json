@@ -1,7 +1,7 @@
 {
+  "overrides": { "autoprefixer": "10.4.5" },
   "name": "backend",
   "version": "1.0.0",
-  "description": "",
   "type": "module",
   "main": "index.js",
   "scripts": {
@@ -19,6 +19,7 @@
     "js-sha1": "^0.6.0",
     "jsonwebtoken": "^8.5.1",
     "mysql2": "^2.3.3",
-    "sequelize": "^6.21.1"
-  }
+    "sequelize": "^6.21.3"
+  },
+  "description": ""
 }

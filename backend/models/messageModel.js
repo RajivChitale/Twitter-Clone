@@ -1,11 +1,11 @@
 import { Sequelize } from "sequelize";
 import db from "../config/database.js";
 const { DataTypes } = Sequelize;
-const Post = db.define('messagelist', {
+const Message = db.define('messagelist', {
     messageid: {
-        type: DataTypes.STRING,
+        type: DataTypes.INTEGER,
         primaryKey: true,
-        allowNull: false
+        autoIncrement: true
     },
     sender: {
         type: DataTypes.STRING
@@ -14,10 +14,10 @@ const Post = db.define('messagelist', {
         type: DataTypes.STRING
     },
     parentid: {                     //applicable if a reply was shared
-        type: DataTypes.STRING
+        type: DataTypes.INTEGER
     },
-    shareid: {
-        type: DataTypes.STRING
+    shareid: {                     //applicable if a reply was shared
+        type: DataTypes.INTEGER
     },
     posttime: {
         type: DataTypes.STRING //string for storage but practically integer
@@ -42,15 +42,16 @@ const Post = db.define('messagelist', {
    freezeTableName: true,
    timestamps: false
 });
-export default Post;
+
+export default Message;
 
 /*
 CREATE TABLE messagelist (
-	messageid VARCHAR(40),
+	messageid INT PRIMARY KEY AUTO_INCREMENT,
 	sender VARCHAR(40),
 	receiver VARCHAR(40),
-	parentid VARCHAR(40),
-	shareid VARCHAR(40),
+	parentid INT,
+	shareid INT,
 	posttime VARCHAR(40),
 	text VARCHAR(280),
 	media1 VARCHAR(100),

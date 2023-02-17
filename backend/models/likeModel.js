@@ -7,7 +7,7 @@ const Like = db.define('likelist', {
         allowNull: false
     },
     postid: {
-        type: DataTypes.STRING,
+        type: DataTypes.INTEGER,
         allowNull: false
     },
     liketime: {
@@ -23,7 +23,7 @@ export default Like;
 /*
 CREATE TABLE likelist (
     username VARCHAR(40),
-    postid VARCHAR(40),
+    postid INT,
     liketime VARCHAR(40)
 ) ENGINE=INNODB;
 */
